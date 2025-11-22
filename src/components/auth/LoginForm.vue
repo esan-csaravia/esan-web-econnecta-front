@@ -35,20 +35,6 @@
   </div>
 </template>
 
-
-<script setup>
-/*
-import { ref } from "vue";
-
-const email = ref("");
-const password = ref("");
-
-const login = () => {
-  console.log("Logging in:", email.value, password.value);
-};
-*/
-</script>
-
 <script>
 export default {
     name: "LoginForm",
