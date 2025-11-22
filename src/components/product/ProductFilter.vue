@@ -51,17 +51,16 @@ export default {
       checkedItems: {},
 
       items: [
-        { id: 1, label: "Apple" },
-        { id: 2, label: "Banana" },
-        { id: 3, label: "Orange" },
-        { id: 4, label: "Strawberry" },
-        { id: 5, label: "Blueberry" },
-        { id: 6, label: "Grape" },
-        { id: 7, label: "Watermelon" },
-        { id: 8, label: "Pineapple" },
-        { id: 9, label: "Mango" },
-        { id: 10, label: "Peach" },
-        // Si quieres, sigo con los 100 items completos
+        { id: 1, label: " " },
+        { id: 2, label: " " },
+        { id: 3, label: " " },
+        { id: 4, label: " " },
+        { id: 5, label: " " },
+        { id: 6, label: " " },
+        { id: 7, label: " " },
+        { id: 8, label: " " },
+        { id: 9, label: " " },
+        { id: 10, label: " " },
       ]
     };
   },
