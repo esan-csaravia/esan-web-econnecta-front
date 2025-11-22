@@ -113,8 +113,6 @@ form h2 {
     margin-bottom: 10px;  /* Puedes ajustar este valor */
 }
 
-/* ========== TU CSS ORIGINAL (NO CAMBIÉ NADA) ========== */
-
 .container {
   background-color: #fff;
   border-radius: 10px;
