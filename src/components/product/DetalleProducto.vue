@@ -26,28 +26,54 @@
           <div class="text-h6 page-title">Detalle del Producto</div>
         </div>
 
-        <!-- CARRUSEL -->
-        <q-carousel
-          swipeable
-          animated
-          arrows
-          height="380px"
-          class="carousel-premium rounded-borders shadow-3"
-          v-model="slide"
-        >
-          <q-carousel-slide
-            v-for="(img, i) in producto.imagenes"
-            :key="i"
-            :name="i"
-            class="flex flex-center"
-          >
+        <!-- GALERÍA DE IMÁGENES -->
+        <div class="gallery-container">
+          <!-- Imagen Principal -->
+          <div class="main-image-container" @mouseenter="showArrows = true" @mouseleave="showArrows = false">
             <img
-              :src="apiBase + img"
-              class="carousel-image"
+              :src="apiBase + producto.imagenes[currentImageIndex]"
+              class="main-image"
               alt="Producto"
             />
-          </q-carousel-slide>
-        </q-carousel>
+
+            <!-- Flechas de Navegación -->
+            <transition name="fade">
+              <div v-if="showArrows && producto.imagenes.length > 1" class="navigation-arrows">
+                <q-btn
+                  round
+                  color="white"
+                  text-color="primary"
+                  icon="chevron_left"
+                  class="arrow-btn arrow-left"
+                  @click="prevImage"
+                  :disable="currentImageIndex === 0"
+                />
+                <q-btn
+                  round
+                  color="white"
+                  text-color="primary"
+                  icon="chevron_right"
+                  class="arrow-btn arrow-right"
+                  @click="nextImage"
+                  :disable="currentImageIndex === producto.imagenes.length - 1"
+                />
+              </div>
+            </transition>
+          </div>
+
+          <!-- Miniaturas -->
+          <div class="thumbnails-container" v-if="producto.imagenes.length > 1">
+            <div
+              v-for="(img, index) in producto.imagenes"
+              :key="index"
+              class="thumbnail"
+              :class="{ active: currentImageIndex === index }"
+              @click="currentImageIndex = index"
+            >
+              <img :src="apiBase + img" alt="Miniatura" />
+            </div>
+          </div>
+        </div>
 
         <!-- INFORMACIÓN DEL PRODUCTO -->
         <q-card class="card-premium q-pa-lg q-mt-lg">
@@ -286,7 +312,6 @@ const route = useRoute();
 const router = useRouter();
 const apiBase = api.defaults.baseURL;
 
-const slide = ref(0);
 const producto = ref(null);
 const comentarios = ref([]);
 const comentariosCalificaciones = ref([]);
@@ -294,11 +319,28 @@ const comentariosCalificaciones = ref([]);
 const loading = ref(true);
 const nuevoComentario = ref("");
 
+// Variables para la galería
+const currentImageIndex = ref(0);
+const showArrows = ref(false);
+
 const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
 
 // ⭐ Rating del vendedor
 const rating = ref({ promedio: 0, total: 0 });
 const conteoEstrellas = ref({});
+
+// Funciones de navegación de imágenes
+const nextImage = () => {
+  if (currentImageIndex.value < producto.value.imagenes.length - 1) {
+    currentImageIndex.value++;
+  }
+};
+
+const prevImage = () => {
+  if (currentImageIndex.value > 0) {
+    currentImageIndex.value--;
+  }
+};
 
 // CARGA GENERAL
 onMounted(async () => {
@@ -429,7 +471,102 @@ const publicarComentario = async () => {
 }
 
 /* =============================
-   CARRUSEL
+   GALERÍA DE IMÁGENES
+============================= */
+.gallery-container {
+  margin-bottom: 24px;
+}
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.navigation-arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.arrow-btn {
+  pointer-events: all;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.1);
+}
+
+.arrow-btn:disabled {
+  opacity: 0.3;
+}
+
+.thumbnails-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+.thumbnail:hover {
+  border-color: #2F5E4E;
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  border-color: #2F5E4E;
+  box-shadow: 0 2px 8px rgba(47,94,78,0.3);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animación fade */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* =============================
+   CARRUSEL (Legacy - puede eliminarse)
 ============================= */
 .carousel-premium {
   border-radius: 16px;
