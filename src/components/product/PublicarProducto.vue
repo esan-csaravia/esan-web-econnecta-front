@@ -1,6 +1,17 @@
 <template>
   <q-page class="q-pa-md publicar-page">
 
+    <!-- BOTÓN VOLVER FUERA DE LA CARD -->
+    <div class="row items-center q-mb-md">
+      <q-btn
+        round
+        icon="arrow_back"
+        class="btn-volver"
+        @click="$router.back()"
+      />
+      <span class="text-h6 q-ml-md" style="color: #2F5E4E; font-weight: 600;">Volver</span>
+    </div>
+
     <q-card class="publicar-card q-pa-xl shadow-3">
 
       <!-- TÍTULO -->
@@ -283,6 +294,22 @@ const publicar = async () => {
   color: #2F5E4E;
   font-weight: 800;
   letter-spacing: 0.5px;
+}
+
+/* ===============================
+   BOTÓN VOLVER
+=============================== */
+.btn-volver {
+  background-color: #C2C48A !important;
+  color: #2F5E4E !important;
+  box-shadow: 0 2px 8px rgba(47,94,78,0.2);
+  transition: 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: #8FAF89 !important;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(47,94,78,0.3);
 }
 
 /* ===============================
