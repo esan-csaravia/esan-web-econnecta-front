@@ -1,18 +1,32 @@
-<template>
+﻿<template>
   <div class="auth-wrapper">
     <div class="container">
 
       <!-- Sign In -->
-      <div class="form-container sign-in-container active-panel">
+      <div class="form-container sign-in-container active-panel" v-if="!showRecoverPassword">
         <form @submit.prevent="login">
           <h2>Iniciar Sesión</h2>
 
           <input v-model="email" type="email" placeholder="Email" />
           <input v-model="password" type="password" placeholder="Password" />
 
-          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+          <a href="#" class="forgot-link" @click.prevent="showRecoverPassword = true">¿Olvidaste tu contraseña?</a>
 
           <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <!-- Recuperar ContraseÃ±a -->
+      <div class="form-container sign-in-container active-panel" v-else>
+        <form @submit.prevent="recoverPassword">
+          <h2>Recuperar Contraseña</h2>
+          <p class="recover-subtitle">Ingresa tu correo electronico y te enviaremos un enlace para restablecer tu contraseña.</p>
+
+          <input v-model="recoverEmail" type="email" placeholder="Email" required />
+
+          <button type="submit">Enviar Enlace</button>
+
+          <a href="#" class="forgot-link" @click.prevent="showRecoverPassword = false">Volver al inicio de sesión</a>
         </form>
       </div>
 
@@ -41,6 +55,8 @@ export default {
     return {
       email: "",
       password: "",
+      showRecoverPassword: false,
+      recoverEmail: ""
     };
   },
   methods: {
@@ -90,6 +106,37 @@ export default {
       }
 
       this.iniciarSesion();
+    },
+
+    recoverPassword() {
+      if (!this.recoverEmail) {
+        this.$q.notify({
+          type: "negative",
+          position: "top",
+          message: "Debes ingresar tu correo electrónico."
+        });
+        return;
+      }
+
+      // Aquí puedes implementar la lógica para enviar el correo de recuperación
+      this.$api.post("api/usuarios/recuperar-password", { correo: this.recoverEmail })
+        .then(() => {
+          this.$q.notify({
+            type: 'positive',
+            position: 'top',
+            message: 'Se ha enviado un enlace de recuperación a tu correo.'
+          });
+          this.showRecoverPassword = false;
+          this.recoverEmail = "";
+        })
+        .catch((error) => {
+          console.error("Error al recuperar contraseña: ", error);
+          this.$q.notify({
+            type: 'negative',
+            position: 'top',
+            message: 'No se pudo enviar el correo de recuperación.'
+          });
+        });
     }
 
   }
@@ -147,6 +194,13 @@ form h2 {
   font-size: 28px;
 }
 
+.recover-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
 /* Inputs modernizados sin modificar el layout */
 input {
   background-color: #f0f1f3;
@@ -177,7 +231,7 @@ input:focus {
   color: #2F5E4E;
 }
 
-/* Botón principal */
+/* BotÃ³n principal */
 button {
   border-radius: 20px;
   border: 1px solid #2F5E4E;
@@ -237,7 +291,7 @@ button:hover {
   filter: brightness(0) invert(1);
 }
 
-/* Botón ghost */
+/* BotÃ³n ghost */
 button.ghost {
   background-color: transparent;
   border: 2px solid #ffffff;

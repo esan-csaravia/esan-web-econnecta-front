@@ -25,7 +25,7 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h2>Bienvenido a EcoConecta</h2>
+            <img src="/icons/ECO_Conecta_image.png" alt="ECO Conecta" class="logo-image" />
             <p>¿Ya tienes cuenta?</p>
             <button class="ghost" @click="$router.push('/Login')">Iniciar Sesión</button>
           </div>
@@ -213,6 +213,13 @@ button:hover {
   text-align: center;
   height: 100%;
   width: 50%;
+}
+
+/* Logo image */
+.logo-image {
+  max-width: 180px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
 }
 
 /* Botón ghost */
