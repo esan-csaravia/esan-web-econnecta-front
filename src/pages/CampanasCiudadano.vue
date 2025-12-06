@@ -47,7 +47,7 @@
 
     <!-- SIN CAMPAÑAS -->
     <div v-if="campanas.length === 0" class="text-center text-grey q-mt-xl">
-      <q-icon name="info" size="40px" color="#2ecc71" />
+      <q-icon name="info" size="40px" color="#2F5E4E" />
       <div>No hay campañas disponibles.</div>
     </div>
 
@@ -99,7 +99,7 @@ onMounted(cargarCampanas);
 .page-title {
   font-size: 1.9rem;
   font-weight: 800;
-  color: #2ecc71; /* Color principal */
+  color: #2F5E4E; /* Color principal */
 }
 
 .page-sub {
@@ -145,7 +145,7 @@ onMounted(cargarCampanas);
 .campana-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  border-color: #2ecc71; /* Toque premium verde */
+  border-color: #2F5E4E; /* Toque premium verde */
 }
 
 /* ===========================
@@ -168,7 +168,7 @@ onMounted(cargarCampanas);
 .campana-titulo {
   font-weight: 700;
   font-size: 1.15rem;
-  color: #2ecc71; /* Título en tu color principal */
+  color: #2F5E4E; /* Título en tu color principal */
 }
 
 .campana-fecha {

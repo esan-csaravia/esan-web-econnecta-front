@@ -47,7 +47,7 @@ const goPublicar = () => {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
   letter-spacing: 0.5px;
 }
 
@@ -61,7 +61,7 @@ const goPublicar = () => {
 /* BOTÓN PUBLICAR */
 /* ================================ */
 .btn-publicar {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 600;
   padding: 10px 18px;
@@ -70,7 +70,7 @@ const goPublicar = () => {
 }
 
 .btn-publicar:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 </style>

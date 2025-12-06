@@ -25,7 +25,7 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h2>Bienvenido a EcoConecta</h2>
+            <img src="/icons/ECO_Conecta_image.png" alt="ECO Conecta" class="logo-image" />
             <p>¿Ya tienes cuenta?</p>
             <button class="ghost" @click="$router.push('/Login')">Iniciar Sesión</button>
           </div>
@@ -64,7 +64,7 @@ const districts = [
 
 
 const register = async () => {
-  if (!contrasena.value || contrasena.value.length <= 8) {
+  if (!contrasena.value || contrasena.value.length <= 7) {
     $q.notify({
       type: "negative",
       position: "top",
@@ -138,7 +138,7 @@ form {
 
 form h2 {
   margin: 0 0 12px 0;
-  color: #2ecc71;
+  color: #2F5E4E;
   font-size: 28px;
   font-weight: 700;
 }
@@ -159,16 +159,16 @@ select {
 input:focus,
 select:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: #2F5E4E;
   background: #ffffff;
-  box-shadow: 0 0 6px rgba(46, 204, 113, 0.25);
+  box-shadow: 0 0 6px rgba(47, 94, 78, 0.25);
 }
 
 /* Botón principal */
 button {
   border-radius: 20px;
-  border: 1px solid #2ecc71;
-  background-color: #2ecc71;
+  border: 1px solid #2F5E4E;
+  background-color: #2F5E4E;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -181,7 +181,7 @@ button {
 }
 
 button:hover {
-  background-color: #29b765;
+  background-color: #8FAF89;
 }
 
 /* Overlay */
@@ -195,7 +195,7 @@ button:hover {
 }
 
 .overlay {
-  background: linear-gradient(to right, #2ecc71, #29b765);
+  background: linear-gradient(to right, #2F5E4E, #8FAF89);
   color: #ffffff;
   height: 100%;
   width: 200%;
@@ -213,6 +213,13 @@ button:hover {
   text-align: center;
   height: 100%;
   width: 50%;
+}
+
+/* Logo image */
+.logo-image {
+  max-width: 180px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
 }
 
 /* Botón ghost */

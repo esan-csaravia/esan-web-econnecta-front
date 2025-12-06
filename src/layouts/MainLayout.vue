@@ -14,13 +14,13 @@
           class="menu-btn"
         />
 
-        <q-toolbar-title class="title-app row items-center">
+        <q-toolbar-title class="title-app row items-center cursor-pointer" @click="$router.push('/product')">
 
               <!-- LOGO desde /public/icons -->
               <q-img
-                src="/icons/EcoConectaLogo.png"
-                width="32px"
-                height="32px"
+                src="/icons/ECO_Conecta_image.png"
+                width="40px"
+                height="40px"
                 class="q-mr-sm header-logo"
               />
 
@@ -41,7 +41,7 @@
             flat
             no-caps
             class="user-btn"
-            :label="usuario.nombre"
+            :label="usuario?.nombre"
             icon-right="arrow_drop_down"
           >
             <q-menu transition-show="jump-down" transition-hide="jump-up">
@@ -80,8 +80,8 @@
       <!-- Logo + título -->
       <div class="q-pa-md row items-center drawer-header">
         <q-img
-          src="/icons/EcoConectaLogo.png"
-          style="width:42px; height:42px"
+          src="/icons/ECO_Conecta_image.png"
+          style="width:50px; height:50px"
           class="q-mr-sm logo"
         />
         <div class="text-h6 text-bold drawer-title">
@@ -136,20 +136,34 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const drawer = ref(false)
 const router = useRouter()
 
-// Obtener usuario
-const usuario = JSON.parse(localStorage.getItem("usuario") || "null")
+// Obtener usuario (reactivo)
+const usuario = ref(JSON.parse(localStorage.getItem("usuario") || "null"))
+
+// Función para actualizar el usuario
+const actualizarUsuario = () => {
+  usuario.value = JSON.parse(localStorage.getItem("usuario") || "null")
+}
+
+// Escuchar el evento de actualización
+onMounted(() => {
+  window.addEventListener('usuario-actualizado', actualizarUsuario)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('usuario-actualizado', actualizarUsuario)
+})
 
 // Iniciales
 const inicialesUsuario = computed(() => {
-  if (!usuario) return "?"
-  const n = usuario.nombre?.charAt(0) || "?"
-  const a = usuario.apellido?.charAt(0) || ""
+  if (!usuario.value) return "?"
+  const n = usuario.value.nombre?.charAt(0) || "?"
+  const a = usuario.value.apellido?.charAt(0) || ""
   return (n + a).toUpperCase()
 })
 
@@ -165,6 +179,7 @@ const logout = () => {
 .header-logo {
   border-radius: 8px;
   object-fit: contain;
+  filter: none;
 }
 
 
@@ -178,13 +193,19 @@ const logout = () => {
 }
 
 .menu-btn {
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .title-app {
   font-weight: 800;
   letter-spacing: 1px;
-  color: #2ecc71;
+  color: #2F5E4E;
+  transition: 0.3s ease;
+}
+
+.title-app:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
 .user-section {
@@ -192,10 +213,10 @@ const logout = () => {
 }
 
 .avatar-user {
-  background: #2ecc71 !important;
+  background: #2F5E4E !important;
   color: white !important;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(46,204,113,0.35);
+  box-shadow: 0 2px 6px rgba(47,94,78,0.35);
 }
 
 .user-btn {
@@ -207,22 +228,23 @@ const logout = () => {
    DRAWER PREMIUM
 ================================ */
 .drawer-premium {
-  background: #f9f9f9 !important;
-  border-right: 1px solid #e5e5e5 !important;
+  background: #f5f7f4 !important;
+  border-right: 1px solid #C2C48A !important;
 }
 
 .drawer-header {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(47,94,78,0.2);
 }
 
 .drawer-title {
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .logo {
   border-radius: 8px;
+  filter: none;
 }
 
 /* ===============================
@@ -236,21 +258,22 @@ const logout = () => {
   border-radius: 10px;
   margin-bottom: 6px;
   font-weight: 600;
-  color: #333;
+  color: #2F5E4E;
   transition: 0.25s ease;
 }
 
 .menu-item:hover {
-  background: rgba(46, 204, 113, 0.15);
+  background: #C2C48A;
+  color: #2F5E4E;
   transform: translateX(4px);
 }
 
 /* Estado activo */
 .q-drawer .q-item.q-router-link-active {
-  background: #e8f8ef !important;
-  color: #2ecc71 !important;
+  background: #8FAF89 !important;
+  color: #2F5E4E !important;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(46,204,113,0.25);
+  box-shadow: 0 2px 6px rgba(47,94,78,0.3);
 }
 
 /* ===============================

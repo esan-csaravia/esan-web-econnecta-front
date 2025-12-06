@@ -1,18 +1,32 @@
-<template>
+﻿<template>
   <div class="auth-wrapper">
     <div class="container">
 
       <!-- Sign In -->
-      <div class="form-container sign-in-container active-panel">
+      <div class="form-container sign-in-container active-panel" v-if="!showRecoverPassword">
         <form @submit.prevent="login">
           <h2>Iniciar Sesión</h2>
 
           <input v-model="email" type="email" placeholder="Email" />
           <input v-model="password" type="password" placeholder="Password" />
 
-          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+          <a href="#" class="forgot-link" @click.prevent="showRecoverPassword = true">¿Olvidaste tu contraseña?</a>
 
           <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <!-- Recuperar ContraseÃ±a -->
+      <div class="form-container sign-in-container active-panel" v-else>
+        <form @submit.prevent="recoverPassword">
+          <h2>Recuperar Contraseña</h2>
+          <p class="recover-subtitle">Ingresa tu correo electronico y te enviaremos un enlace para restablecer tu contraseña.</p>
+
+          <input v-model="recoverEmail" type="email" placeholder="Email" required />
+
+          <button type="submit">Enviar Enlace</button>
+
+          <a href="#" class="forgot-link" @click.prevent="showRecoverPassword = false">Volver al inicio de sesión</a>
         </form>
       </div>
 
@@ -20,7 +34,8 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h2>Bienvenido de vuelta</h2>
+            <img src="/icons/ECO_Conecta_image.png" alt="ECO Conecta" class="logo-image" />
+
             <p>¿No tienes cuenta?</p>
 
             <button class="ghost" @click="$router.push('/register')">
@@ -40,6 +55,8 @@ export default {
     return {
       email: "",
       password: "",
+      showRecoverPassword: false,
+      recoverEmail: ""
     };
   },
   methods: {
@@ -89,6 +106,37 @@ export default {
       }
 
       this.iniciarSesion();
+    },
+
+    recoverPassword() {
+      if (!this.recoverEmail) {
+        this.$q.notify({
+          type: "negative",
+          position: "top",
+          message: "Debes ingresar tu correo electrónico."
+        });
+        return;
+      }
+
+      // Aquí puedes implementar la lógica para enviar el correo de recuperación
+      this.$api.post("api/usuarios/recuperar-password", { correo: this.recoverEmail })
+        .then(() => {
+          this.$q.notify({
+            type: 'positive',
+            position: 'top',
+            message: 'Se ha enviado un enlace de recuperación a tu correo.'
+          });
+          this.showRecoverPassword = false;
+          this.recoverEmail = "";
+        })
+        .catch((error) => {
+          console.error("Error al recuperar contraseña: ", error);
+          this.$q.notify({
+            type: 'negative',
+            position: 'top',
+            message: 'No se pudo enviar el correo de recuperación.'
+          });
+        });
     }
 
   }
@@ -142,8 +190,15 @@ form h2 {
   margin-top: 0;
   margin-bottom: 12px;
   font-weight: 700;
-  color: #2ecc71;
+  color: #2F5E4E;
   font-size: 28px;
+}
+
+.recover-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 /* Inputs modernizados sin modificar el layout */
@@ -160,9 +215,9 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: #2F5E4E;
   background: #ffffff;
-  box-shadow: 0 0 6px rgba(46, 204, 113, 0.25);
+  box-shadow: 0 0 6px rgba(47, 94, 78, 0.25);
 }
 
 /* Link */
@@ -173,14 +228,14 @@ input:focus {
 }
 
 .forgot-link:hover {
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
-/* Botón principal */
+/* BotÃ³n principal */
 button {
   border-radius: 20px;
-  border: 1px solid #2ecc71;
-  background-color: #2ecc71;
+  border: 1px solid #2F5E4E;
+  background-color: #2F5E4E;
   color: #ffffff;
   font-size: 13px;
   font-weight: bold;
@@ -192,7 +247,7 @@ button {
 }
 
 button:hover {
-  background-color: #29b765;
+  background-color: #8FAF89;
   transform: translateY(-2px);
 }
 
@@ -208,7 +263,7 @@ button:hover {
 }
 
 .overlay {
-  background: linear-gradient(to right, #2ecc71, #29b765);
+  background: linear-gradient(to right, #2F5E4E, #8FAF89);
   color: #ffffff;
   height: 100%;
   width: 200%;
@@ -229,7 +284,14 @@ button:hover {
   left: 0;
 }
 
-/* Botón ghost */
+/* Logo image */
+.logo-image {
+  max-width: 180px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
+}
+
+/* BotÃ³n ghost */
 button.ghost {
   background-color: transparent;
   border: 2px solid #ffffff;

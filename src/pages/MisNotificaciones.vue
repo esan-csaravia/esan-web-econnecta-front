@@ -117,7 +117,7 @@ const iconoTipo = (tipo) =>
 
 const colorTipo = (tipo) =>
   ({
-    compra: "#2ecc71",
+    compra: "#2F5E4E",
     venta: "#e67e22",
     interes: "#3498db",
     calificacion: "#f1c40f",
@@ -149,7 +149,7 @@ const verDetalle = (noti) => {
 
 .notif-title {
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* ======== LISTA ======== */

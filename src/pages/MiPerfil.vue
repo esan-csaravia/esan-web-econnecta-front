@@ -388,6 +388,17 @@ const guardarCambios = async () => {
 
     dialogEditar.value = false;
     cargarUsuario();
+
+    // Actualizar el localStorage con los nuevos datos
+    const usuarioActualizado = JSON.parse(localStorage.getItem("usuario"));
+    usuarioActualizado.nombre = form.value.nombre;
+    usuarioActualizado.apellido = form.value.apellido;
+    usuarioActualizado.distrito = form.value.distrito;
+    localStorage.setItem("usuario", JSON.stringify(usuarioActualizado));
+
+    // Forzar actualización del componente padre
+    window.dispatchEvent(new Event('usuario-actualizado'));
+
     $q.notify({ type: "positive", message: "Perfil actualizado correctamente." });
   } catch {
     $q.notify({ type: "negative", message: "Error al guardar cambios." });
@@ -430,7 +441,7 @@ const anosMiembro = computed(() => {
 
 .page-title {
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
   letter-spacing: 0.5px;
 }
 
@@ -455,11 +466,11 @@ const anosMiembro = computed(() => {
 /* ========================== */
 
 .avatar-premium {
-  background: #2ecc71 !important;
+  background: #2F5E4E !important;
   color: white;
   font-size: 38px;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(46,204,113,0.35);
+  box-shadow: 0 4px 12px rgba(47,94,78,0.35);
 }
 
 /* ========================== */
@@ -471,7 +482,7 @@ const anosMiembro = computed(() => {
 }
 
 .perfil-rating {
-  color: #2ecc71;
+  color: #2F5E4E;
   font-weight: 600;
 }
 
@@ -481,7 +492,7 @@ const anosMiembro = computed(() => {
 
 .perfil-stat .valor {
   font-weight: 700;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* ========================== */
@@ -495,7 +506,7 @@ const anosMiembro = computed(() => {
 
 .info-icon {
   margin-right: 8px;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* ========================== */
@@ -503,14 +514,14 @@ const anosMiembro = computed(() => {
 /* ========================== */
 
 .btn-primary {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   border-radius: 10px;
 }
 
 .btn-primary:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 .btn-outline-premium {

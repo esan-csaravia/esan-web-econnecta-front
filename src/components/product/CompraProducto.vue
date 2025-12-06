@@ -213,7 +213,7 @@ const formatearFecha = (fechaStr) =>
    TITULOS 
 ========================================== */
 .page-title {
-  color: #2ecc71;
+  color: #2F5E4E;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
@@ -242,10 +242,10 @@ const formatearFecha = (fechaStr) =>
    SELLER SECTION
 ========================================== */
 .avatar-seller {
-  background: #2ecc71 !important;
+  background: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
-  box-shadow: 0 3px 8px rgba(46,204,113,0.4);
+  box-shadow: 0 3px 8px rgba(47,94,78,0.4);
 }
 
 .seller-title {
@@ -262,7 +262,7 @@ const formatearFecha = (fechaStr) =>
 .product-price {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .banner-error {
@@ -273,7 +273,7 @@ const formatearFecha = (fechaStr) =>
    BOTONES PREMIUM
 ========================================== */
 .btn-primary {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   border-radius: 10px;
@@ -281,7 +281,7 @@ const formatearFecha = (fechaStr) =>
 }
 
 .btn-primary:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 .btn-secondary {
@@ -291,7 +291,7 @@ const formatearFecha = (fechaStr) =>
 
 /* BACK BUTTON */
 .btn-back {
-  color: #2ecc71 !important;
+  color: #2F5E4E !important;
 }
 
 /* RATING TITLE */

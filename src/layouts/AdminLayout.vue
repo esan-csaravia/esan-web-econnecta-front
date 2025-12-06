@@ -41,11 +41,11 @@
     <q-drawer v-model="drawer" show-if-above bordered class="drawer-premium">
 
       <div class="q-pa-md row items-center drawer-header">
-        <q-avatar size="48px" color="white" text-color="#2ecc71" class="avatar-admin">
+        <q-avatar size="48px" color="white" text-color="#2F5E4E" class="avatar-admin">
           AD
         </q-avatar>
 
-        <div class="q-ml-sm text-h6 text-bold" style="color:#2ecc71">
+        <div class="q-ml-sm text-h6 text-bold" style="color:#2F5E4E">
           Administrador
         </div>
       </div>
@@ -115,7 +115,7 @@ const logout = () => {
    HEADER PREMIUM
 ================================ */
 .header-premium {
-  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  background: linear-gradient(90deg, #2F5E4E, #8FAF89);
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
@@ -143,7 +143,7 @@ const logout = () => {
 }
 
 .avatar-admin {
-  border: 2px solid #2ecc71;
+  border: 2px solid #2F5E4E;
 }
 
 /* ================================
@@ -160,12 +160,12 @@ const logout = () => {
 }
 
 .menu-item:hover {
-  background: rgba(46, 204, 113, 0.14);
+  background: rgba(47, 94, 78, 0.14);
   transform: translateX(4px);
 }
 
 .menu-icon {
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .menu-text {
@@ -175,10 +175,10 @@ const logout = () => {
 
 /* ACTIVO */
 .q-drawer .q-item.q-router-link-active {
-  background: rgba(46, 204, 113, 0.25) !important;
-  color: #2ecc71 !important;
+  background: rgba(47, 94, 78, 0.25) !important;
+  color: #2F5E4E !important;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(46, 204, 113, 0.2);
+  box-shadow: 0 2px 6px rgba(47, 94, 78, 0.2);
 }
 
 /* ================================
@@ -189,9 +189,9 @@ const logout = () => {
   padding: 20px;
 }
 
-/* Botones globales en #2ecc71 */
+/* Botones globales en #2F5E4E */
 .q-btn.bg-primary, .q-btn.text-primary {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
 }
 
