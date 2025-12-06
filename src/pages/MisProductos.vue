@@ -185,7 +185,7 @@ const getEstadoColor = (estado) =>
 
 .page-title {
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* ==============================
@@ -218,7 +218,7 @@ const getEstadoColor = (estado) =>
 
 /* Precio */
 .producto-precio {
-  color: #2ecc71;
+  color: #2F5E4E;
   font-weight: 800;
 }
 

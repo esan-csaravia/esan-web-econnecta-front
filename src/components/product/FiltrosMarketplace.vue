@@ -113,7 +113,7 @@ const emitBuscar = () => {
 }
 
 .input-premium :deep(.q-field__control:hover) {
-  border-color: #2ecc71 !important;
+  border-color: #2F5E4E !important;
 }
 
 .input-premium :deep(.q-field__label) {
@@ -122,15 +122,15 @@ const emitBuscar = () => {
 
 /* Cuando está activo o enfocado */
 .input-premium :deep(.q-field--focused .q-field__control) {
-  border-color: #2ecc71 !important;
-  box-shadow: 0 0 4px rgba(46,204,113,0.4);
+  border-color: #2F5E4E !important;
+  box-shadow: 0 0 4px rgba(47,94,78,0.4);
 }
 
 /* ============================================== */
 /* BOTÓN PREMIUM */
 /* ============================================== */
 .btn-premium {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   border-radius: 10px;
@@ -139,7 +139,7 @@ const emitBuscar = () => {
 }
 
 .btn-premium:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 </style>

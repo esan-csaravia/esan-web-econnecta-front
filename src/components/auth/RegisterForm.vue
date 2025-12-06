@@ -138,7 +138,7 @@ form {
 
 form h2 {
   margin: 0 0 12px 0;
-  color: #2ecc71;
+  color: #2F5E4E;
   font-size: 28px;
   font-weight: 700;
 }
@@ -159,16 +159,16 @@ select {
 input:focus,
 select:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: #2F5E4E;
   background: #ffffff;
-  box-shadow: 0 0 6px rgba(46, 204, 113, 0.25);
+  box-shadow: 0 0 6px rgba(47, 94, 78, 0.25);
 }
 
 /* Botón principal */
 button {
   border-radius: 20px;
-  border: 1px solid #2ecc71;
-  background-color: #2ecc71;
+  border: 1px solid #2F5E4E;
+  background-color: #2F5E4E;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -181,7 +181,7 @@ button {
 }
 
 button:hover {
-  background-color: #29b765;
+  background-color: #8FAF89;
 }
 
 /* Overlay */
@@ -195,7 +195,7 @@ button:hover {
 }
 
 .overlay {
-  background: linear-gradient(to right, #2ecc71, #29b765);
+  background: linear-gradient(to right, #2F5E4E, #8FAF89);
   color: #ffffff;
   height: 100%;
   width: 200%;

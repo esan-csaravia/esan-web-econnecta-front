@@ -244,7 +244,7 @@ const filteredUsers = computed(() => {
 .header-title {
   font-size: 32px;
   font-weight: 900;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .header-sub {

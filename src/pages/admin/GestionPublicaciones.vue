@@ -162,7 +162,7 @@ const rechazarPublicacion = async () => {
 .header-title {
   font-size: 32px;
   font-weight: 900;
-  color: #2ecc71;
+  color: #2F5E4E;
   margin-bottom: 20px;
 }
 
@@ -216,7 +216,7 @@ const rechazarPublicacion = async () => {
 .pub-price {
   font-size: 18px;
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* ACCIONES */

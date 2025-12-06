@@ -12,16 +12,19 @@ CardProducto.vue
         arrows
         height="230px"
         class="rounded-borders carousel-premium"
+        @click="verMas"
       >
         <q-carousel-slide
           v-for="(img, index) in imagenesAbsolutas"
           :key="index"
           :name="index"
+          class="flex flex-center"
         >
-          <div
-            class="full-height full-width bg-cover"
-            :style="`background-image: url('${img}')`"
-          ></div>
+          <img
+            :src="img"
+            class="carousel-image"
+            alt="Producto"
+          />
         </q-carousel-slide>
       </q-carousel>
 
@@ -131,9 +134,11 @@ const verMas = async () => {
   border-bottom: 1px solid #f0f0f0;
 }
 
-.bg-cover {
-  background-size: cover;
-  background-position: center;
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* ================================ */
@@ -152,7 +157,7 @@ const verMas = async () => {
   font-size: 1.3rem;
   font-weight: 800;
   margin-top: 4px;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .product-meta {
@@ -174,13 +179,13 @@ const verMas = async () => {
 }
 
 .btn-premium {
-  color: #2ecc71 !important;
+  color: #2F5E4E !important;
   font-weight: 600;
   transition: 0.25s ease;
 }
 
 .btn-premium:hover {
-  background: rgba(46,204,113,0.12);
+  background: rgba(47,94,78,0.12);
 }
 
 /* BORDER RADIUS BASE */

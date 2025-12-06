@@ -20,7 +20,8 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h2>Bienvenido de vuelta</h2>
+            <img src="/icons/ECO_Conecta_image.png" alt="ECO Conecta" class="logo-image" />
+
             <p>¿No tienes cuenta?</p>
 
             <button class="ghost" @click="$router.push('/register')">
@@ -142,7 +143,7 @@ form h2 {
   margin-top: 0;
   margin-bottom: 12px;
   font-weight: 700;
-  color: #2ecc71;
+  color: #2F5E4E;
   font-size: 28px;
 }
 
@@ -160,9 +161,9 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: #2F5E4E;
   background: #ffffff;
-  box-shadow: 0 0 6px rgba(46, 204, 113, 0.25);
+  box-shadow: 0 0 6px rgba(47, 94, 78, 0.25);
 }
 
 /* Link */
@@ -173,14 +174,14 @@ input:focus {
 }
 
 .forgot-link:hover {
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* Botón principal */
 button {
   border-radius: 20px;
-  border: 1px solid #2ecc71;
-  background-color: #2ecc71;
+  border: 1px solid #2F5E4E;
+  background-color: #2F5E4E;
   color: #ffffff;
   font-size: 13px;
   font-weight: bold;
@@ -192,7 +193,7 @@ button {
 }
 
 button:hover {
-  background-color: #29b765;
+  background-color: #8FAF89;
   transform: translateY(-2px);
 }
 
@@ -208,7 +209,7 @@ button:hover {
 }
 
 .overlay {
-  background: linear-gradient(to right, #2ecc71, #29b765);
+  background: linear-gradient(to right, #2F5E4E, #8FAF89);
   color: #ffffff;
   height: 100%;
   width: 200%;
@@ -227,6 +228,13 @@ button:hover {
   height: 100%;
   width: 50%;
   left: 0;
+}
+
+/* Logo image */
+.logo-image {
+  max-width: 180px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
 }
 
 /* Botón ghost */

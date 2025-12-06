@@ -212,7 +212,7 @@ const publicar = async () => {
    TÍTULO
 =============================== */
 .titulo-premium {
-  color: #2ecc71;
+  color: #2F5E4E;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
@@ -229,7 +229,7 @@ const publicar = async () => {
 }
 
 .uploader-premium {
-  border: 2px dashed #2ecc71;
+  border: 2px dashed #2F5E4E;
   border-radius: 14px;
   padding: 14px;
   background: #f6fff9;
@@ -239,7 +239,7 @@ const publicar = async () => {
    BOTÓN PUBLICAR
 =============================== */
 .btn-publicar {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   padding: 12px;
@@ -248,7 +248,7 @@ const publicar = async () => {
 }
 
 .btn-publicar:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 </style>

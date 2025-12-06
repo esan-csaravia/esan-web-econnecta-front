@@ -39,11 +39,13 @@
             v-for="(img, i) in producto.imagenes"
             :key="i"
             :name="i"
+            class="flex flex-center"
           >
-            <div
-              class="full-height full-width bg-cover"
-              :style="`background-image: url('${apiBase + img}')`"
-            ></div>
+            <img
+              :src="apiBase + img"
+              class="carousel-image"
+              alt="Producto"
+            />
           </q-carousel-slide>
         </q-carousel>
 
@@ -417,13 +419,13 @@ const publicarComentario = async () => {
    TOP BAR
 ============================= */
 .top-bar-premium .page-title {
-  color: #2ecc71;
+  color: #2F5E4E;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
 
 .btn-back {
-  color: #2ecc71 !important;
+  color: #2F5E4E !important;
 }
 
 /* =============================
@@ -432,6 +434,14 @@ const publicarComentario = async () => {
 .carousel-premium {
   border-radius: 16px;
   overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.carousel-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* =============================
@@ -461,7 +471,7 @@ const publicarComentario = async () => {
 .product-price {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .section-title {
@@ -471,17 +481,17 @@ const publicarComentario = async () => {
 
 /* BADGE */
 .badge-premium {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
 }
 
 /* =============================
    SELLER
 ============================= */
 .avatar-seller {
-  background: #2ecc71 !important;
+  background: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
-  box-shadow: 0 3px 8px rgba(46,204,113,0.35);
+  box-shadow: 0 3px 8px rgba(47,94,78,0.35);
 }
 
 .seller-name {
@@ -494,7 +504,7 @@ const publicarComentario = async () => {
 
 .icon-info {
   margin-right: 8px;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 /* =============================
@@ -517,7 +527,7 @@ const publicarComentario = async () => {
    BOTONES PREMIUM
 ============================= */
 .btn-primary {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   border-radius: 10px;
@@ -525,7 +535,7 @@ const publicarComentario = async () => {
 }
 
 .btn-primary:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 
 .btn-outline {

@@ -276,7 +276,7 @@ onMounted(() => obtenerCampanas());
 
 .title {
   font-weight: 700;
-  color: #2ecc71 !important;
+  color: #2F5E4E !important;
 }
 
 .subtitle {
@@ -288,7 +288,7 @@ onMounted(() => obtenerCampanas());
 .btn-crear {
   border-radius: 10px;
   padding: 8px 16px;
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
 }
 

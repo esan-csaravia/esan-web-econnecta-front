@@ -229,7 +229,7 @@ const guardar = async () => {
 ===================================== */
 .titulo-premium {
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
   letter-spacing: 0.5px;
 }
 
@@ -248,7 +248,7 @@ const guardar = async () => {
    Uploader Premium
 ===================================== */
 .uploader-premium {
-  border: 2px dashed #2ecc71;
+  border: 2px dashed #2F5E4E;
   border-radius: 14px;
   padding: 14px;
   background: #f6fff9;
@@ -265,7 +265,7 @@ const guardar = async () => {
    BOTONES
 ===================================== */
 .btn-guardar {
-  background-color: #2ecc71 !important;
+  background-color: #2F5E4E !important;
   color: white !important;
   font-weight: 700;
   padding: 12px;
@@ -274,6 +274,6 @@ const guardar = async () => {
 }
 
 .btn-guardar:hover {
-  background-color: #27ae60 !important;
+  background-color: #2F5E4E !important;
 }
 </style>

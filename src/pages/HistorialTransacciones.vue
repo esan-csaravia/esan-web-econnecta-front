@@ -132,7 +132,7 @@ const balanceTotal = computed(() =>
 ============================== */
 .titulo-premium {
   font-weight: 800;
-  color: #2ecc71;
+  color: #2F5E4E;
 }
 
 .subtitulo-premium {
@@ -178,7 +178,7 @@ const balanceTotal = computed(() =>
 
 .table-title {
   font-weight: 700;
-  color: #2ecc71;
+  color: #2F5E4E;
   margin-bottom: 20px;
 }
 
