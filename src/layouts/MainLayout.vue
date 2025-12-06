@@ -14,7 +14,7 @@
           class="menu-btn"
         />
 
-        <q-toolbar-title class="title-app row items-center">
+        <q-toolbar-title class="title-app row items-center cursor-pointer" @click="$router.push('/product')">
 
               <!-- LOGO desde /public/icons -->
               <q-img
@@ -41,7 +41,7 @@
             flat
             no-caps
             class="user-btn"
-            :label="usuario.nombre"
+            :label="usuario?.nombre"
             icon-right="arrow_drop_down"
           >
             <q-menu transition-show="jump-down" transition-hide="jump-up">
@@ -136,20 +136,34 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const drawer = ref(false)
 const router = useRouter()
 
-// Obtener usuario
-const usuario = JSON.parse(localStorage.getItem("usuario") || "null")
+// Obtener usuario (reactivo)
+const usuario = ref(JSON.parse(localStorage.getItem("usuario") || "null"))
+
+// Función para actualizar el usuario
+const actualizarUsuario = () => {
+  usuario.value = JSON.parse(localStorage.getItem("usuario") || "null")
+}
+
+// Escuchar el evento de actualización
+onMounted(() => {
+  window.addEventListener('usuario-actualizado', actualizarUsuario)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('usuario-actualizado', actualizarUsuario)
+})
 
 // Iniciales
 const inicialesUsuario = computed(() => {
-  if (!usuario) return "?"
-  const n = usuario.nombre?.charAt(0) || "?"
-  const a = usuario.apellido?.charAt(0) || ""
+  if (!usuario.value) return "?"
+  const n = usuario.value.nombre?.charAt(0) || "?"
+  const a = usuario.value.apellido?.charAt(0) || ""
   return (n + a).toUpperCase()
 })
 
@@ -186,6 +200,12 @@ const logout = () => {
   font-weight: 800;
   letter-spacing: 1px;
   color: #2F5E4E;
+  transition: 0.3s ease;
+}
+
+.title-app:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
 .user-section {

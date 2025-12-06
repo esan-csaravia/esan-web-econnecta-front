@@ -64,7 +64,7 @@ const districts = [
 
 
 const register = async () => {
-  if (!contrasena.value || contrasena.value.length <= 8) {
+  if (!contrasena.value || contrasena.value.length <= 7) {
     $q.notify({
       type: "negative",
       position: "top",

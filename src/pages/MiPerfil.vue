@@ -388,6 +388,17 @@ const guardarCambios = async () => {
 
     dialogEditar.value = false;
     cargarUsuario();
+
+    // Actualizar el localStorage con los nuevos datos
+    const usuarioActualizado = JSON.parse(localStorage.getItem("usuario"));
+    usuarioActualizado.nombre = form.value.nombre;
+    usuarioActualizado.apellido = form.value.apellido;
+    usuarioActualizado.distrito = form.value.distrito;
+    localStorage.setItem("usuario", JSON.stringify(usuarioActualizado));
+
+    // Forzar actualización del componente padre
+    window.dispatchEvent(new Event('usuario-actualizado'));
+
     $q.notify({ type: "positive", message: "Perfil actualizado correctamente." });
   } catch {
     $q.notify({ type: "negative", message: "Error al guardar cambios." });
